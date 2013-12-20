@@ -413,13 +413,31 @@ public class MessagingNotification {
                         ", first addr=" + address + ", thread_id=" + threadId);
             }
 
-            if (sp.getBoolean(MessagingPreferenceActivity.MMS_BREATH, false)) {
-            MmsSmsNotificationInfo info = getNewMessageNotificationInfo(
-                    address, body, context, R.drawable.stat_notify_sms,
-                    null, threadId, timeMillis, cursor.getCount());
-               } else {
-            MmsSmsNotificationInfo info = getNewMessageNotificationInfo(
+            //(sp.getBoolean(MessagingPreferenceActivity.NOTIFICATION_VIBRATE, false)
+            /*SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+            String vibrateWhen;
+            if (sp.contains(MessagingPreferenceActivity.NOTIFICATION_VIBRATE_WHEN)) {
+                vibrateWhen =
+                    sp.getString(MessagingPreferenceActivity.NOTIFICATION_VIBRATE_WHEN, null);
+            } else if (sp.contains(MessagingPreferenceActivity.NOTIFICATION_VIBRATE)) {
+                vibrateWhen = sp.getBoolean(MessagingPreferenceActivity.NOTIFICATION_VIBRATE, false) ?
+                    context.getString(R.string.prefDefault_vibrate_true) :
+                    context.getString(R.string.prefDefault_vibrate_false);
+            } else {        */
+
+			MmsSmsNotificationInfo info;
+			
+			SharedPreferences mms_breath_pref = PreferenceManager.getDefaultSharedPreferences(context);
+			boolean mmsBreathEnabled = mms_breath_pref.getBoolean(MessagingPreferenceActivity.MMS_BREATH, true);
+			
+			
+            if (mmsBreathEnabled) {
+            info = getNewMessageNotificationInfo(
                     address, body, context, R.drawable.stat_notify_sms_breath,
+                    null, threadId, timeMillis, cursor.getCount());
+            } else {
+            info = getNewMessageNotificationInfo(
+                    address, body, context, R.drawable.stat_notify_sms,
                     null, threadId, timeMillis, cursor.getCount());
             }
 
