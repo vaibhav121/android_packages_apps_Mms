@@ -816,4 +816,9 @@
     <string name="pref_summary_sms_EnableMultipartSMS">"Transform long text messages into MMS"</string>
     <string name="pref_title_sms_SmsToMmsTextThreshold">"SMS count"</string>
     <string name="pref_summary_sms_SmsToMmsTextThreshold">"<xliff:g id="COUNT">%1$s</xliff:g> messages before MMS conversion"</string>
+
+    <!-- Mms Breath -->
+    <string name="mms_breath">Breathing SMS</string>
+    <string name="mms_breath_summary">Will give your statusbar notifications a breathing effect</string>
+
 </resources>

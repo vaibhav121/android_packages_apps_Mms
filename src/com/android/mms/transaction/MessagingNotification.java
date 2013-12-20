@@ -413,9 +413,15 @@ public class MessagingNotification {
                         ", first addr=" + address + ", thread_id=" + threadId);
             }
 
+            if (sp.getBoolean(MessagingPreferenceActivity.MMS_BREATH, false)) {
             MmsSmsNotificationInfo info = getNewMessageNotificationInfo(
                     address, body, context, R.drawable.stat_notify_sms,
                     null, threadId, timeMillis, cursor.getCount());
+               } else {
+            MmsSmsNotificationInfo info = getNewMessageNotificationInfo(
+                    address, body, context, R.drawable.stat_notify_sms_breath,
+                    null, threadId, timeMillis, cursor.getCount());
+            }
 
             threads.add(threadId);
             while (cursor.moveToNext()) {

@@ -80,6 +80,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String NOTIFICATION_VIBRATE_PATTERN_CUSTOM = "pref_key_mms_notification_vibrate_pattern_custom";
     public static final String NOTIFICATION_VIBRATE_CALL ="pre_key_mms_notification_vibrate_call";
     public static final String INPUT_TYPE               = "pref_key_mms_input_type";
+    public static final String MMS_BREATH               = "mms_breath";
 
     // Menu entries
     private static final int MENU_RESTORE_DEFAULTS    = 1;
@@ -98,6 +99,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private Preference mSmsToMmsTextThreshold;
     private ListPreference mVibrateWhenPref;
     private CheckBoxPreference mEnableNotificationsPref;
+    private CheckBoxPreference mMMSBreath;
     private Recycler mSmsRecycler;
     private Recycler mMmsRecycler;
     private Preference mManageTemplate;
@@ -132,6 +134,9 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         mMmsRetrievalDuringRoaming = (CheckBoxPreference) findPreference(RETRIEVAL_DURING_ROAMING);
         mMmsRetrievalDuringRoaming.setChecked(Settings.System.getInt(resolver,
                 Settings.System.MMS_AUTO_RETRIEVAL_ON_ROAMING, 0) == 1);
+
+        mMMSBreath = (CheckBoxPreference) findPreference(MMS_BREATH);
+        mMMSBreath.setChecked(mMMSBreath.isChecked());
 
         mEnableMultipartSMS = (CheckBoxPreference)findPreference("pref_key_sms_EnableMultipartSMS");
         mSmsToMmsTextThreshold = findPreference("pref_key_sms_SmsToMmsTextThreshold");
@@ -341,6 +346,8 @@ public class MessagingPreferenceActivity extends PreferenceActivity
             // Update the value in Settings.System
             Settings.System.putInt(getContentResolver(), Settings.System.MMS_AUTO_RETRIEVAL_ON_ROAMING,
                     mMmsRetrievalDuringRoaming.isChecked() ? 1 : 0);
+        } else if (preference == mMMSBreath) {
+            mMMSBreath.setChecked(mMMSBreath.isChecked());
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
