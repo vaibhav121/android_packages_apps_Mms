@@ -413,23 +413,10 @@ public class MessagingNotification {
                         ", first addr=" + address + ", thread_id=" + threadId);
             }
 
-            //(sp.getBoolean(MessagingPreferenceActivity.NOTIFICATION_VIBRATE, false)
-            /*SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-            String vibrateWhen;
-            if (sp.contains(MessagingPreferenceActivity.NOTIFICATION_VIBRATE_WHEN)) {
-                vibrateWhen =
-                    sp.getString(MessagingPreferenceActivity.NOTIFICATION_VIBRATE_WHEN, null);
-            } else if (sp.contains(MessagingPreferenceActivity.NOTIFICATION_VIBRATE)) {
-                vibrateWhen = sp.getBoolean(MessagingPreferenceActivity.NOTIFICATION_VIBRATE, false) ?
-                    context.getString(R.string.prefDefault_vibrate_true) :
-                    context.getString(R.string.prefDefault_vibrate_false);
-            } else {        */
-
 			MmsSmsNotificationInfo info;
 			
 			SharedPreferences mms_breath_pref = PreferenceManager.getDefaultSharedPreferences(context);
 			boolean mmsBreathEnabled = mms_breath_pref.getBoolean(MessagingPreferenceActivity.MMS_BREATH, true);
-			
 			
             if (mmsBreathEnabled) {
             info = getNewMessageNotificationInfo(
