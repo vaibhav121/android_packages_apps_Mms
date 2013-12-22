@@ -18,6 +18,8 @@
  */
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!-- Storage Preferences -->
   <PreferenceCategory android:title="@string/pref_sms_storage_title"
                       android:key="pref_key_storage_settings">
 <!--
@@ -40,6 +42,8 @@
                       android:summary="@string/pref_summary_delete_limit"
                       android:title="@string/pref_title_mms_delete" />
   </PreferenceCategory>
+
+<!-- Text(SMS) Messages Preferences -->
   <PreferenceCategory android:title="@string/pref_sms_settings_title"
                       android:key="pref_key_sms_settings" >
     <CheckBoxPreference android:defaultValue="false"
@@ -54,6 +58,8 @@
                       android:summary="@string/pref_summary_manage_sim_messages"
                       android:title="@string/pref_title_manage_sim_messages" />
   </PreferenceCategory>
+
+<!-- Multimedia (MMS) Messages Preferences -->  
   <PreferenceCategory android:title="@string/pref_mms_settings_title"
                       android:key="pref_key_mms_settings">
     <CheckBoxPreference android:defaultValue="false"
@@ -75,16 +81,17 @@
                         android:title="@string/pref_title_mms_retrieval_during_roaming"
                         android:summary="@string/pref_summary_mms_retrieval_during_roaming" />
   </PreferenceCategory>
+
+<!-- Notification Settings -->
   <PreferenceCategory android:title="@string/pref_notification_settings_title">
     <CheckBoxPreference android:key="pref_key_enable_notifications"
                         android:title="@string/pref_title_notification_enabled"
                         android:summary="@string/pref_summary_notification_enabled"
                         android:defaultValue="true" />
-       <CheckBoxPreference
-            android:key="mms_breath"
-            android:title="@string/mms_breath"
-            android:summary="@string/mms_breath_summary"
-            android:defaultValue="false" />
+    <CheckBoxPreference android:key="mms_breath"
+                        android:title="@string/mms_breath"
+                        android:summary="@string/mms_breath_summary"
+                        android:defaultValue="false" />
     <RingtonePreference android:layout="?android:attr/preferenceLayoutChild"
                         android:dependency="pref_key_enable_notifications"
                         android:key="pref_key_ringtone"
@@ -115,6 +122,8 @@
                         android:title="@string/pref_title_mms_notification_vibrate_call"
                         android:summary="@string/pref_summary_mms_notification_vibrate_call" />
   </PreferenceCategory>
+
+<!-- SMS Templates Preferences -->
   <PreferenceCategory android:title="@string/prefs_templates_settings" >
         <Preference
             android:key="pref_key_templates_manage"
@@ -133,9 +142,17 @@
             android:entryValues="@array/pref_templates_gestures_sensitivity_values"
             android:key="pref_key_templates_gestures_sensitivity"
             android:title="@string/pref_title_template_gestures_sensitivity" />
-    </PreferenceCategory>
+  </PreferenceCategory>
 
+<!-- Extra Settings -->
   <PreferenceCategory android:title="@string/pref_extra_settings">
+    <ListPreference     android:key="pref_key_mms_message_font_size"
+                        android:defaultValue="18"
+                        android:title="@string/pref_title_mms_message_font_size"
+                        android:summary="@string/pref_summary_mms_message_font_size"
+                        android:entries="@array/pref_mms_message_font_size_entries"
+                        android:entryValues="@array/pref_mms_message_font_size_values"
+                        android:dialogTitle="@string/pref_dialogtitle_mms_message_font_size"/>
     <CheckBoxPreference android:key="pref_key_strip_unicode"
                         android:title="@string/pref_title_strip_unicode"
                         android:summary="@string/pref_summary_strip_unicode"

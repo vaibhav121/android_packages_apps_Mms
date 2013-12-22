@@ -72,6 +72,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String SHOW_GESTURE             = "pref_key_templates_show_gesture";
     public static final String GESTURE_SENSITIVITY      = "pref_key_templates_gestures_sensitivity";
     public static final String GESTURE_SENSITIVITY_VALUE= "pref_key_templates_gestures_sensitivity_value";
+    public static final String MESSAGE_FONT_SIZE        = "pref_key_mms_message_font_size";
     public static final String STRIP_UNICODE            = "pref_key_strip_unicode";
     public static final String ENABLE_EMOJIS            = "pref_key_enable_emojis";
     public static final String FULL_TIMESTAMP           = "pref_key_mms_full_timestamp";
