@@ -413,20 +413,9 @@ public class MessagingNotification {
                         ", first addr=" + address + ", thread_id=" + threadId);
             }
 
-			MmsSmsNotificationInfo info;
-			
-			SharedPreferences mms_breath_pref = PreferenceManager.getDefaultSharedPreferences(context);
-			boolean mmsBreathEnabled = mms_breath_pref.getBoolean(MessagingPreferenceActivity.MMS_BREATH, true);
-			
-            if (mmsBreathEnabled) {
-            info = getNewMessageNotificationInfo(
-                    address, body, context, R.drawable.stat_notify_sms_breath,
-                    null, threadId, timeMillis, cursor.getCount());
-            } else {
-            info = getNewMessageNotificationInfo(
+            MmsSmsNotificationInfo info = getNewMessageNotificationInfo(
                     address, body, context, R.drawable.stat_notify_sms,
                     null, threadId, timeMillis, cursor.getCount());
-            }
 
             threads.add(threadId);
             while (cursor.moveToNext()) {
@@ -566,14 +555,19 @@ public class MessagingNotification {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, clickIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+
         // Update the notification.
         notificationbuilder.setContentIntent(pendingIntent);
         notificationbuilder.setContentTitle(title);
         notificationbuilder.setContentText(description);
-        notificationbuilder.setSmallIcon(iconRes);
+        if (sp.getBoolean(MessagingPreferenceActivity.MMS_BREATH, false)) {
+            notificationbuilder.setSmallIcon(R.drawable.stat_notify_sms_breath);
+        } else {
+			notificationbuilder.setSmallIcon(iconRes);
+		}
 
         if (isNew) {
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
             String vibrateWhen;
             if (sp.contains(MessagingPreferenceActivity.NOTIFICATION_VIBRATE_WHEN)) {
                 vibrateWhen =
