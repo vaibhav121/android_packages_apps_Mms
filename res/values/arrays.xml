@@ -111,9 +111,9 @@
 
     <string-array name="pref_mms_notification_vibrate_pattern_values" translatable="false">
        <item></item>
-       <item>0,1200</item>
-       <item>0,2500</item>
-       <item>0,300,100,300,100,300,100,300,100,300</item>
+       <item>0,400</item>
+       <item>0,800</item>
+       <item>0,300,100,300,100,300,100,300</item>
        <item>0,800,200,800,200,800</item>
        <item>custom</item>
     </string-array>
